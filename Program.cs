@@ -190,3 +190,37 @@ void Show2dArray(int[,] array)
 // Show2dArray(table2);
 // ProdMatrix(table1, table2);
 // Show2dArray(resultTable);
+
+
+// Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет 
+// построчно выводить массив, добавляя индексы каждого элемента.
+
+
+
+// Task 62. Напишите программу, которая заполнит спирально любой двумерный массив.
+
+Console.Write("Введите количество строк: ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите количество столбцов: ");
+int m = Convert.ToInt32(Console.ReadLine());
+int[,] array = new int[n, m];
+
+int temp = 1;
+int i = 0;
+int j = 0;
+
+while (temp <= array.GetLength(0) * array.GetLength(1))
+{
+  array[i, j] = temp;
+  temp++;
+  if (i <= j + 1 && i + j < array.GetLength(1) - 1)
+    j++;
+  else if (i <= array.GetLength(0) - 1)
+    i++;
+  else if (i >= j && i + j > array.GetLength(1) - 1)
+    j--;
+  else
+    i--;
+}
+
+Show2dArray(array);
