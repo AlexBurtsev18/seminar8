@@ -197,67 +197,76 @@ void Show2dArray(int[,] array)
 
 
 
-// Task 62. Напишите программу, которая заполнит спирально любой двумерный массив.
+// Task 62+. Напишите программу, которая заполнит спирально любой двумерный массив.
 
-Console.Write("Введите количество строк: ");
-int n = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите количество столбцов: ");
-int m = Convert.ToInt32(Console.ReadLine());
-int[,] array = new int[n, m];
+int n = 4;
+int[,] array = new int[n, n];
 
 int temp = 1;
 int i = 0;
 int j = 0;
-int highBoardRow = n - 1;
-int highBoardColumn = m - 1;
-int lowBoardRow = 0;
-int lowBoardColumn = 0;
 
 while (temp <= array.GetLength(0) * array.GetLength(1))
 {
   array[i, j] = temp;
-  for(j = lowBoardColumn; j<=highBoardColumn; j++)
-  {
-    temp++;
-  }
-  for(i = lowBoardRow; i<=highBoardRow; i++)
-  {
-    temp++;
-  }
-  for(j = highBoardColumn; j>=lowBoardColumn; j--)
-  {
-    temp++;
-  }
-  for(i = highBoardRow; i>=lowBoardRow; i--)
-  {
-    temp++;
-  }
-  
-  highBoardColumn -= 1;
-  highBoardRow -=1;
-  lowBoardColumn += 1;
-  lowBoardRow += 1;
+  temp++;
+  if (i <= j + 1 && i + j < array.GetLength(1) - 1)
+    j++;
+  else if (i < j && i + j >= array.GetLength(0) - 1)
+    i++;
+  else if (i >= j && i + j > array.GetLength(1) - 1)
+    j--;
+  else
+    i--;
 }
 
 Show2dArray(array);
 
-//   if(j<=highBoardColumn)
-//   {
-//       j++;
-//   }
+
+
+// Console.Write("Введите количество строк: ");
+// int n = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите количество столбцов: ");
+// int m = Convert.ToInt32(Console.ReadLine());
+// int[,] array = new int[n, m];
+
+// int temp = 1;
+// int i = 0;
+// int j = 0;
+// int highBoardRow = n - 1;
+// int highBoardColumn = m - 1;
+// int lowBoardRow = 0;
+// int lowBoardColumn = 0;
+
+// while (temp <= array.GetLength(0) * array.GetLength(1))
+// {
+//   array[i, j] = temp;
+//   for(j = lowBoardColumn; j<=highBoardColumn; j++)
+//     {
+//       temp++;
+//       array[i, j] = temp;
+//     }
+//   for(i = lowBoardRow; i<=highBoardRow; i++)
+//     {
+//       temp++;
+//       array[i, j] = temp;
+//     }
+//   for(j = highBoardColumn; j>=lowBoardColumn; j--)
+//     {
+//       temp++;
+//       array[i, j] = temp;
+//     }
+//   for(i = highBoardRow; i>=lowBoardRow; i--)
+//     {
+//       temp++;
+//       array[i, j] = temp;
+//     }
+  
 //   highBoardColumn -= 1;
-//   if(i<=highBoardRow)
-//   {
-//     i++;
-//   }
-//   highBoardRow -= 1;
-//   if(j>=lowBoardColumn)
-//   {
-//     j--;
-//   }
+//   highBoardRow -=1;
 //   lowBoardColumn += 1;
-//   if(i>=lowBoardRow)
-//   {
-//     i--;
-//   }
-//   lowBoardColumn += 1;
+//   lowBoardRow += 1;
+// }
+
+// Show2dArray(array);
+
